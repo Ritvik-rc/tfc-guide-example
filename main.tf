@@ -4,7 +4,7 @@ provider "aws" {
 }
 resource "aws_instance" "app_server" {
   ami = "ami-0bcf5425cdc1d8a85"
-  associate_public_ip = "true"
+  associate_public_ip_address = "true"
   instance_type = "t2.micro"
   key_name= "TestPair"
   subnet_id= "subnet-059515ea9d63c9af5"
