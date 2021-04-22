@@ -1,20 +1,13 @@
 provider "aws" {
   region = var.aws_region
 }
-
-provider "random" {}
-
-resource "random_pet" "table_name" {}
-
-resource "aws_dynamodb_table" "tfc_example_table" {
-  name = "${var.db_table_name}-${random_pet.table_name.id}"
-
-  read_capacity  = var.db_read_capacity
-  write_capacity = var.db_write_capacity
-  hash_key       = "UUID"
-
-  attribute {
-    name = "UUID"
-    type = "S"
+resource "aws_instance" "app_server" {
+  ami           = "ami-0bcf5425cdc1d8a85"
+  instance_type = "t2.micro"
+  key_name= "TestPair"
+  subnet_id= "subnet-059515ea9d63c9af5"
+  security_groups = ["sg-0f59b76e1aa6ce6f4"]
+  tags = {
+    Name = "ExampleAppServerInstance"
   }
 }
