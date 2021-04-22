@@ -1,10 +1,15 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
+    }
+  }
+}
+
 provider "aws" {
   region = var.aws_region
 }
-
-provider "random" {}
-
-resource "random_pet" "table_name" {}
 
 resource "aws_dynamodb_table" "tfc_example_table" {
   name = "${var.db_table_name}-${random_pet.table_name.id}"
