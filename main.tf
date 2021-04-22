@@ -10,6 +10,6 @@ resource "aws_instance" "app_server" {
   subnet_id= "subnet-059515ea9d63c9af5"
   security_groups = ["sg-0f59b76e1aa6ce6f4"]
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = "New_Instance"
   }
 }
