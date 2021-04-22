@@ -2,6 +2,10 @@ provider "aws" {
   region = var.aws_region
 }
 
+provider "random" {}
+
+resource "random_pet" "table_name" {}
+
 resource "aws_dynamodb_table" "tfc_example_table" {
   name = "${var.db_table_name}-${random_pet.table_name.id}"
 
